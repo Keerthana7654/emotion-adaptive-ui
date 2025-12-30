@@ -1,0 +1,4 @@
+com\ai\emotion\EmotionResponse.class
+com\ai\emotion\EmotionRequest.class
+com\ai\emotion\EmotionController.class
+com\ai\emotion\EmotionUiApplication.class

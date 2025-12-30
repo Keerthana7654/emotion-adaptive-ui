@@ -1,0 +1,1 @@
+package com.ai.emotion; public class EmotionResponse { public String theme; public String message; }
