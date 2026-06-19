@@ -104,8 +104,8 @@ export default function MainLayout() {
   useEffect(() => { startVideo(); loadModels(); }, []);
 
   const loadModels = async () => {
-    await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-    await faceapi.nets.faceExpressionNet.loadFromUri("/models");
+    await faceapi.nets.tinyFaceDetector.loadFromUri("/emotion-adaptive-ui/models");
+    await faceapi.nets.faceExpressionNet.loadFromUri("/emotion-adaptive-ui/models");
     detectEmotion();
   };
 
