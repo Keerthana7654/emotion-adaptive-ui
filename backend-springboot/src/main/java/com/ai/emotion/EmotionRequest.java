@@ -1,1 +1,0 @@
-package com.ai.emotion; public class EmotionRequest { public String emotion; }

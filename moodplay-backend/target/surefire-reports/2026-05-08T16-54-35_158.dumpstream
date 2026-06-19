@@ -1,0 +1,5 @@
+# Created at 2026-05-08T16:54:35.549
+Boot Manifest-JAR contains absolute paths in classpath 'D:\AI 2\AI-Face-Based-UI\moodplay-backend\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

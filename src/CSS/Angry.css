@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+:root {
+  --blood:   #c0392b;
+  --ember:   #e74c3c;
+  --dark:    #0a0a0a;
+  --steel:   #1c1c1e;
+  --iron:    #2c2c2e;
+  --ash:     #5a5a5a;
+  --light:   #f0ece6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#angry {
+  min-width: 100vw;
+  background-color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  position: relative;
+  cursor: crosshair;
+}
+
+/* ── Animated ember particles ── */
+#angry::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%,   rgba(192,57,43,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(180,30,10,0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 80%,    rgba(100,10,10,0.18) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+  animation: shiftGlow 6s ease-in-out infinite alternate;
+}
+
+/* Diagonal slash texture overlay */
+#angry::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 40px,
+    rgba(192,57,43,0.03) 40px,
+    rgba(192,57,43,0.03) 42px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Hero ── */
+#cont {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 52px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Top warning strip */
+.warning-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--blood);
+  color: var(--light);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  padding: 7px 24px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+  animation: flashIn 0.4s ease both;
+  box-shadow: 0 0 30px rgba(192,57,43,0.5);
+}
+
+.warning-strip::before,
+.warning-strip::after {
+  content: '⚠';
+  font-size: 0.8rem;
+}
+
+/* Giant title */
+.anger-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  color: var(--light);
+  text-align: center;
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  animation: smashIn 0.5s cubic-bezier(.17,.67,.35,1.3) 0.05s both;
+  text-shadow:
+    4px 4px 0 var(--blood),
+    8px 8px 0 rgba(192,57,43,0.3);
+}
+
+.anger-title .highlight {
+  color: var(--ember);
+  display: block;
+}
+
+/* Emotion status bar */
+.emotion-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  border: 1.5px solid var(--blood);
+  border-radius: 3px;
+  padding: 10px 24px;
+  background: rgba(192,57,43,0.08);
+  animation: smashIn 0.5s cubic-bezier(.17,.67,.35,1.3) 0.2s both;
+}
+
+.anger-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 10px var(--ember);
+  animation: ragePulse 0.8s ease-in-out infinite;
+}
+
+.emotion-bar span {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--ash);
+}
+
+.emotion-bar strong {
+  color: var(--ember);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Section header ── */
+.battle-header {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 1200px;
+  margin: 28px auto 12px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.battle-header h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.6rem;
+  color: var(--ash);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+.battle-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blood), transparent);
+}
+
+/* ── Game Grid ── */
+.games-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 56px;
+  padding: 0 16px;
+}
+
+.game-card {
+  position: relative;
+  background: var(--steel);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--iron);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: cardSlam 0.45s cubic-bezier(.17,.67,.35,1.2) both;
+}
+
+.game-card:nth-child(1)  { animation-delay: 0.05s; }
+.game-card:nth-child(2)  { animation-delay: 0.10s; }
+.game-card:nth-child(3)  { animation-delay: 0.15s; }
+.game-card:nth-child(4)  { animation-delay: 0.20s; }
+.game-card:nth-child(5)  { animation-delay: 0.25s; }
+.game-card:nth-child(6)  { animation-delay: 0.30s; }
+.game-card:nth-child(7)  { animation-delay: 0.35s; }
+.game-card:nth-child(8)  { animation-delay: 0.40s; }
+.game-card:nth-child(9)  { animation-delay: 0.45s; }
+.game-card:nth-child(10) { animation-delay: 0.50s; }
+
+/* Red slash accent on top */
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blood), var(--ember), transparent);
+  z-index: 2;
+}
+
+/* Corner bracket decoration */
+.game-card::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border-bottom: 2px solid var(--blood);
+  border-right: 2px solid var(--blood);
+  opacity: 0.5;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.game-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: var(--blood);
+  box-shadow: 0 12px 40px rgba(192,57,43,0.35), 0 0 0 1px var(--blood);
+}
+
+.game-card iframe {
+  width: 100%;
+  height: 340px;
+  border: none;
+  display: block;
+}
+
+/* ── Keyframes ── */
+@keyframes shiftGlow {
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}
+
+@keyframes flashIn {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes smashIn {
+  from { transform: translateY(-30px) skewX(-4deg); opacity: 0; }
+  to   { transform: translateY(0) skewX(0deg); opacity: 1; }
+}
+
+@keyframes cardSlam {
+  from { transform: translateY(50px) skewY(-1deg); opacity: 0; }
+  to   { transform: translateY(0) skewY(0deg); opacity: 1; }
+}
+
+@keyframes ragePulse {
+  0%, 100% { transform: scale(1);   box-shadow: 0 0 10px var(--ember); }
+  50%       { transform: scale(1.5); box-shadow: 0 0 20px var(--ember), 0 0 40px rgba(231,76,60,0.4); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .games-grid { grid-template-columns: 1fr; }
+  .game-card iframe { height: 260px; }
+  .anger-title { font-size: 3.2rem; }
+}

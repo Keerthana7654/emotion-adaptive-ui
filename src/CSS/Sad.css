@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');
+
+:root {
+  --deep:    #0f1b2d;
+  --navy:    #162236;
+  --blue:    #1e3a5f;
+  --periwinkle: #7b9fd4;
+  --lavender:   #b8a9d9;
+  --silver:  #c8d8ee;
+  --soft:    #e8f0fc;
+  --white:   #f5f8ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#sad {
+  width: 100%;
+  background: linear-gradient(180deg, #0f1b2d 0%, #1a2a45 40%, #22334f 100%);
+  font-family: 'Lato', sans-serif;
+  position: relative;
+}
+
+/* ── Rain animation ── */
+.rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.raindrop {
+  position: absolute;
+  top: -10%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(180,210,255,0.35));
+  border-radius: 999px;
+  animation: fall linear infinite;
+}
+
+/* 20 raindrops with varied positions, speeds, heights */
+.raindrop:nth-child(1)  { left:  3%; height: 80px;  animation-duration: 1.4s; animation-delay: 0.0s; }
+.raindrop:nth-child(2)  { left:  8%; height: 60px;  animation-duration: 1.8s; animation-delay: 0.3s; }
+.raindrop:nth-child(3)  { left: 14%; height: 90px;  animation-duration: 1.2s; animation-delay: 0.1s; }
+.raindrop:nth-child(4)  { left: 20%; height: 70px;  animation-duration: 1.6s; animation-delay: 0.7s; }
+.raindrop:nth-child(5)  { left: 27%; height: 55px;  animation-duration: 2.0s; animation-delay: 0.2s; }
+.raindrop:nth-child(6)  { left: 33%; height: 85px;  animation-duration: 1.3s; animation-delay: 0.5s; }
+.raindrop:nth-child(7)  { left: 39%; height: 65px;  animation-duration: 1.7s; animation-delay: 0.9s; }
+.raindrop:nth-child(8)  { left: 45%; height: 95px;  animation-duration: 1.1s; animation-delay: 0.4s; }
+.raindrop:nth-child(9)  { left: 51%; height: 75px;  animation-duration: 1.5s; animation-delay: 0.6s; }
+.raindrop:nth-child(10) { left: 57%; height: 60px;  animation-duration: 1.9s; animation-delay: 0.0s; }
+.raindrop:nth-child(11) { left: 63%; height: 88px;  animation-duration: 1.4s; animation-delay: 0.8s; }
+.raindrop:nth-child(12) { left: 69%; height: 70px;  animation-duration: 1.6s; animation-delay: 0.3s; }
+.raindrop:nth-child(13) { left: 74%; height: 50px;  animation-duration: 2.1s; animation-delay: 0.1s; }
+.raindrop:nth-child(14) { left: 80%; height: 80px;  animation-duration: 1.3s; animation-delay: 0.5s; }
+.raindrop:nth-child(15) { left: 86%; height: 65px;  animation-duration: 1.8s; animation-delay: 0.7s; }
+.raindrop:nth-child(16) { left: 91%; height: 92px;  animation-duration: 1.2s; animation-delay: 0.2s; }
+.raindrop:nth-child(17) { left: 96%; height: 58px;  animation-duration: 1.7s; animation-delay: 0.4s; }
+.raindrop:nth-child(18) { left: 11%; height: 74px;  animation-duration: 1.5s; animation-delay: 1.0s; }
+.raindrop:nth-child(19) { left: 48%; height: 83px;  animation-duration: 1.1s; animation-delay: 0.6s; }
+.raindrop:nth-child(20) { left: 76%; height: 67px;  animation-duration: 2.0s; animation-delay: 0.9s; }
+
+/* ── Hero ── */
+#content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 60px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.sad-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  animation: gentleIn 0.8s ease both;
+}
+
+.sad-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5.5vw, 4.2rem);
+  color: var(--white);
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 400;
+  animation: gentleIn 0.8s ease 0.1s both;
+}
+
+.sad-title em {
+  font-style: italic;
+  color: var(--lavender);
+}
+
+.sad-comfort {
+  font-size: 1rem;
+  color: var(--periwinkle);
+  font-weight: 300;
+  margin-top: 14px;
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.6;
+  opacity: 0.85;
+  animation: gentleIn 0.8s ease 0.2s both;
+}
+
+/* Moon glow decoration */
+.moon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8f0fc, #b8c8e8);
+  box-shadow:
+    0 0 20px rgba(184,200,232,0.4),
+    0 0 60px rgba(184,200,232,0.15);
+  margin-bottom: 28px;
+  animation: moonGlow 4s ease-in-out infinite alternate, gentleIn 0.8s ease both;
+}
+
+/* Emotion tag */
+.emotion-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  border: 1px solid rgba(123,159,212,0.3);
+  border-radius: 3px;
+  padding: 10px 22px;
+  background: rgba(30,58,95,0.4);
+  backdrop-filter: blur(8px);
+  animation: gentleIn 0.8s ease 0.3s both;
+}
+
+.sad-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lavender);
+  box-shadow: 0 0 8px var(--lavender);
+  animation: softPulse 3s ease-in-out infinite;
+}
+
+.emotion-tag span {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--periwinkle);
+  text-transform: uppercase;
+}
+
+.emotion-tag strong {
+  font-size: 0.85rem;
+  color: var(--silver);
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+/* ── Section label ── */
+.section-label {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto 14px;
+  padding: 0 5%;
+}
+
+.section-label span {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--periwinkle);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(123,159,212,0.3), transparent);
+}
+
+/* ── Game Grid ── */
+.games-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 56px;
+  padding: 0 5%;
+}
+
+.game-card {
+  background: rgba(22,34,54,0.7);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(123,159,212,0.15);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  animation: gentleIn 0.6s ease both;
+}
+
+.game-card:nth-child(1)  { animation-delay: 0.05s; }
+.game-card:nth-child(2)  { animation-delay: 0.10s; }
+.game-card:nth-child(3)  { animation-delay: 0.15s; }
+.game-card:nth-child(4)  { animation-delay: 0.20s; }
+.game-card:nth-child(5)  { animation-delay: 0.25s; }
+.game-card:nth-child(6)  { animation-delay: 0.30s; }
+.game-card:nth-child(7)  { animation-delay: 0.35s; }
+.game-card:nth-child(8)  { animation-delay: 0.40s; }
+.game-card:nth-child(9)  { animation-delay: 0.45s; }
+.game-card:nth-child(10) { animation-delay: 0.50s; }
+.game-card:nth-child(11) { animation-delay: 0.55s; }
+.game-card:nth-child(12) { animation-delay: 0.60s; }
+
+.game-card::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--lavender), transparent);
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(184,169,217,0.3);
+  border-color: rgba(184,169,217,0.4);
+}
+
+.game-card iframe {
+  width: 100%;
+  height: 340px;
+  border: none;
+  display: block;
+}
+
+/* ── Keyframes ── */
+@keyframes fall {
+  from { transform: translateY(-5vh); opacity: 0.8; }
+  to   { transform: translateY(110vh); opacity: 0.2; }
+}
+
+@keyframes gentleIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes moonGlow {
+  from { box-shadow: 0 0 20px rgba(184,200,232,0.3), 0 0 50px rgba(184,200,232,0.1); }
+  to   { box-shadow: 0 0 30px rgba(184,200,232,0.5), 0 0 80px rgba(184,200,232,0.2); }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.25); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .games-grid { grid-template-columns: 1fr; }
+  .game-card iframe { height: 260px; }
+  .sad-title { font-size: 2.2rem; }
+}

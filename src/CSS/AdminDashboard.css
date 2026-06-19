@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+  --void: #03040a;
+  --panel: #0c1220;
+  --border: rgba(255,255,255,0.06);
+  --glow: #00d4ff;
+  --text: #e8edf5;
+  --muted: rgba(232,237,245,0.7);
+}
+
+.ad-root {
+  display: flex;
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+}
+
+/* ── Sidebar ── */
+.ad-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #07090f;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 20px;
+  gap: 4px;
+}
+
+.ad-brand {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 24px;
+}
+
+.ad-brand-icon { color: var(--glow); font-size: 1.5rem; text-shadow: 0 0 10px var(--glow); }
+.ad-brand-text {
+  font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 900;
+  background: linear-gradient(135deg, #00d4ff, #b44dff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.ad-admin-tag {
+  font-family: 'Orbitron', monospace; font-size: 1rem; letter-spacing: 0.25em;
+  color: rgba(0,212,255,0.4); margin-bottom: 2px;
+}
+
+.ad-admin-name {
+  font-size: 1rem; font-weight: 600; color: var(--text);
+  margin-bottom: 28px;
+}
+
+.ad-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+
+.ad-nav-btn {
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-nav-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+.ad-nav-btn.active { background: rgba(0,212,255,0.08); color: var(--glow); border-left: 2px solid var(--glow); }
+
+.ad-logout {
+  margin-top: auto;
+  background: transparent;
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 6px;
+  padding: 9px;
+  color: rgba(239,68,68,0.6);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.ad-logout:hover { background: rgba(239,68,68,0.08); color: #f87171; }
+
+/* ── Main ── */
+.ad-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
+
+.ad-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(7,9,15,0.8);
+  backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 10;
+}
+
+.ad-page-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text);
+}
+
+.ad-refresh {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 14px;
+  color: var(--muted);
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Exo 2', sans-serif;
+  transition: all 0.15s ease;
+}
+.ad-refresh:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+.ad-content { padding: 28px 32px; flex: 1; }
+
+/* ── Stats grid ── */
+.ad-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.ad-stat {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
+.ad-stat-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem; font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.ad-stat-label { font-size: 1rem; color: var(--muted); }
+.ad-stat-sub   { font-size: 0.7rem;  color: rgba(232,237,245,0.2); margin-top: 2px; }
+
+/* ── Section title ── */
+.ad-section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(232,237,245,0.8); margin-bottom: 14px;
+}
+
+/* ── Emotion bars ── */
+.ad-emotion-bars { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+.ad-ebar { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+.ad-ebar-label { display: flex; justify-content: space-between; font-size: 1.1rem; grid-column: 1 / -1; }
+
+.ad-ebar-track {
+  height: 5px; background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; grid-column: 1;
+}
+
+.ad-ebar-fill { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+.ad-ebar-pct  { font-size: 0.72rem; color: var(--muted); text-align: right; }
+
+/* ── Add game form ── */
+.ad-add-form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+  margin-bottom: 8px;
+}
+
+.ad-field-row { display: flex; gap: 14px; }
+.ad-field-row-3 .ad-field { flex: 1; }
+
+.ad-field { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+
+.ad-field label {
+  font-family: 'Orbitron', monospace; font-size: 0.76rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(232,237,245,0.3);
+}
+
+.ad-field input, .ad-field select {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: 'Exo 2', sans-serif; font-size: 1rem;
+  color: var(--text); outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ad-field input:focus, .ad-field select:focus {
+  border-color: rgba(0,212,255,0.3);
+  box-shadow: 0 0 0 2px rgba(0,212,255,0.06);
+}
+
+.ad-field select option { background: #0c1220; }
+
+.ad-msg { padding: 10px 14px; border-radius: 6px; font-size: 0.83rem; }
+.ad-msg-ok  { background: rgba(0,255,157,0.07); border: 1px solid rgba(0,255,157,0.2); color: #00ff9d; }
+.ad-msg-err { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); color: #f87171; }
+
+.ad-submit-btn {
+  align-self: flex-start;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 6px;
+  padding: 11px 22px;
+  color: var(--glow);
+  font-family: 'Orbitron', monospace; font-size: 0.72rem; letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ad-submit-btn:hover:not(:disabled) { background: rgba(0,212,255,0.16); box-shadow: 0 0 16px rgba(0,212,255,0.12); }
+.ad-submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+/* ── Table ── */
+.ad-table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+
+.ad-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+
+.ad-table thead tr {
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.ad-table th {
+  padding: 10px 16px; text-align: left;
+  font-family: 'Orbitron', monospace; font-size: 1rem; letter-spacing: 0.15em;
+  color: rgba(232,237,245,0.9); font-weight: 400;
+}
+
+.ad-table td { padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; font-size: 1rem;}
+.ad-table tr:last-child td { border-bottom: none; }
+.ad-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+.ad-row-inactive td { opacity: 0.4; }
+
+.ad-mood-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 999px; font-size: 0.9rem;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.ad-status { font-size: 0.72rem; font-family: 'Orbitron', monospace; letter-spacing: 0.1em; }
+.ad-status-on  { color: #00ff9d; }
+.ad-status-off { color: rgba(232,237,245,0.25); }
+
+.ad-game-link { color: var(--glow); text-decoration: none; }
+.ad-game-link:hover { text-decoration: underline; }
+
+.ad-del-btn {
+  background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 4px; padding: 4px 10px;
+  color: rgba(239,68,68,0.7); font-size: 0.9rem;
+  cursor: pointer; transition: all 0.15s ease;
+  font-family: 'Exo 2', sans-serif;
+}
+.ad-del-btn:hover { background: rgba(239,68,68,0.14); color: #f87171; }
+
+.ad-tags, .ad-muted { color: var(--muted); font-size: 0.8rem; }
+.ad-ts { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+.ad-note { max-width: 220px; font-size: 0.8rem; color: var(--muted); }
+.ad-stars { font-size: 0.85rem; letter-spacing: -1px; }
+.ad-empty { text-align: center; color: rgba(232,237,245,0.2); padding: 32px; }
+
+/* ── Missing classes (Issue 1 fix) ── */
+
+/* 3-column form row */
+.ad-field-row-3 {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.ad-field-row-3 .ad-field { flex: 1; min-width: 160px; }
+
+/* Action buttons cell */
+.ad-actions { display: flex; gap: 8px; align-items: center; }
+
+/* Enable/Disable toggle button */
+.ad-toggle-btn {
+  background: rgba(0,212,255,0.07);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: rgba(0,212,255,0.7);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Exo 2', sans-serif;
+}
+.ad-toggle-btn:hover { background: rgba(0,212,255,0.14); color: #00d4ff; }
+
+/* Error banner shown when backend is unreachable */
+.ad-error-banner {
+  margin: 16px 32px 0;
+  padding: 12px 18px;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 0.85rem;
+}
+
+/* Monospace for session keys */
+.ad-mono {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(232,237,245,0.7);
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Message auto-dismiss with countdown bar ── */
+.ad-msg {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-radius: 7px;
+  font-size: 0.84rem;
+  font-family: 'Exo 2', sans-serif;
+  margin-top: 10px;
+}
+
+.ad-msg-ok {
+  background: rgba(0,255,157,0.07);
+  border: 1px solid rgba(0,255,157,0.25);
+  color: #00ff9d;
+}
+
+.ad-msg-err {
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #f87171;
+}
+
+/* Countdown bar — shrinks from 100% to 0% in exactly 10s */
+.ad-msg-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  animation: adMsgCountdown 10s linear forwards;
+}
+
+.ad-msg-ok .ad-msg-bar  { background: #00ff9d; }
+.ad-msg-err .ad-msg-bar { background: #f87171; }
+
+@keyframes adMsgCountdown {
+  from { width: 100%; }
+  to   { width: 0%;   }
+}

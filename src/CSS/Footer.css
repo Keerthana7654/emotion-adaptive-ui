@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@300;400;600&display=swap');
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  background: #04060d;
+  font-family: 'Exo 2', sans-serif;
+  color: rgba(232,237,245,0.55);
+  margin-top: auto;
+}
+
+/* Glow top line */
+.footer-top-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,212,255,0.35) 25%,
+    rgba(180,77,255,0.35) 50%,
+    rgba(0,255,157,0.2) 75%,
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(0,212,255,0.15);
+}
+
+/* Inner grid */
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding: 48px 56px 40px;
+}
+
+/* Brand column */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-icon {
+  font-size: 1.3rem;
+  color: #00d4ff;
+  text-shadow: 0 0 12px #00d4ff;
+  animation: footerPulse 3s ease-in-out infinite;
+}
+
+.footer-logo-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #00d4ff, #b44dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(232,237,245,0.4);
+}
+
+.footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0,255,157,0.05);
+  border: 1px solid rgba(0,255,157,0.15);
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,255,157,0.6);
+  width: fit-content;
+}
+
+.footer-badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #00ff9d;
+  box-shadow: 0 0 6px #00ff9d;
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+/* Columns */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-col-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232,237,245,0.25);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.86rem;
+  color: rgba(232,237,245,0.5);
+  transition: color 0.2s ease;
+}
+
+.footer-links li:hover { color: rgba(232,237,245,0.85); }
+
+.footer-mood-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footer-link-icon {
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* Status column */
+.footer-status li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-ok   { background: #00ff9d; box-shadow: 0 0 6px #00ff9d; animation: blink 2s ease-in-out infinite; }
+.status-warn { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; animation: blink 1.2s ease-in-out infinite; }
+
+.status-label {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.1em;
+  color: rgba(0,255,157,0.5);
+}
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 56px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(232,237,245,0.22);
+  letter-spacing: 0.06em;
+}
+
+.footer-bottom-orbs {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-mini-orb {
+  display: block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.footer-mini-orb:hover {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* Keyframes */
+@keyframes blink      { 0%,100%{opacity:1} 50%{opacity:0.2} }
+@keyframes footerPulse { 0%,100%{text-shadow:0 0 12px #00d4ff} 50%{text-shadow:0 0 24px #00d4ff, 0 0 40px rgba(0,212,255,0.4)} }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 36px 24px 28px;
+  }
+  .footer-bottom { padding: 14px 24px 18px; }
+}
+
+@media (max-width: 560px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+}

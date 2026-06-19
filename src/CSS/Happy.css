@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;800&display=swap');
+
+:root {
+  --sun: #FFD93D;
+  --coral: #FF6B6B;
+  --mint: #6BCB77;
+  --sky: #4D96FF;
+  --peach: #FFB347;
+  --white: #FFFDF7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.happy-container {
+  min-width: 100vw;
+  background: var(--white);
+  font-family: 'Nunito', sans-serif;
+  position: relative;
+}
+
+/* ── Floating bubbles background ── */
+.happy-container::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,217,61,0.18) 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, rgba(255,107,107,0.15) 0%, transparent 35%),
+    radial-gradient(circle at 60% 80%, rgba(107,203,119,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 20% 75%, rgba(77,150,255,0.12) 0%, transparent 35%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Hero Banner ── */
+#content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 48px 24px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sun);
+  color: #5a3e00;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.95rem;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(255,179,71,0.35);
+  animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.hero-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  color: #1a1a2e;
+  text-align: center;
+  line-height: 1.1;
+  animation: slideUp 0.6s cubic-bezier(.34,1.56,.64,1) 0.1s both;
+}
+
+.hero-title span {
+  background: linear-gradient(135deg, var(--coral), var(--peach));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: #888;
+  margin-top: 10px;
+  font-weight: 600;
+  animation: slideUp 0.6s cubic-bezier(.34,1.56,.64,1) 0.2s both;
+}
+
+/* ── Emotion Pill ── */
+.emotion-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  background: white;
+  border: 2.5px solid var(--coral);
+  border-radius: 999px;
+  padding: 10px 28px;
+  box-shadow: 6px 6px 0 var(--coral);
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--coral);
+  animation: slideUp 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s both;
+}
+
+.emotion-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 3px rgba(107,203,119,0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Divider ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 32px auto 8px;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-divider span {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  color: #1a1a2e;
+  white-space: nowrap;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e0e0e0);
+}
+.section-divider::before {
+  background: linear-gradient(90deg, #e0e0e0, transparent);
+}
+
+/* ── Game Grid ── */
+.games-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 0px;
+  padding: 0 16px;
+}
+
+.game-card {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2.5px solid #f0f0f0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+  animation: cardReveal 0.5s ease both;
+}
+
+.game-card:nth-child(1)  { animation-delay: 0.05s; }
+.game-card:nth-child(2)  { animation-delay: 0.10s; }
+.game-card:nth-child(3)  { animation-delay: 0.15s; }
+.game-card:nth-child(4)  { animation-delay: 0.20s; }
+.game-card:nth-child(5)  { animation-delay: 0.25s; }
+.game-card:nth-child(6)  { animation-delay: 0.30s; }
+.game-card:nth-child(7)  { animation-delay: 0.35s; }
+.game-card:nth-child(8)  { animation-delay: 0.40s; }
+.game-card:nth-child(9)  { animation-delay: 0.45s; }
+.game-card:nth-child(10) { animation-delay: 0.50s; }
+.game-card:nth-child(11) { animation-delay: 0.55s; }
+.game-card:nth-child(12) { animation-delay: 0.60s; }
+.game-card:nth-child(13) { animation-delay: 0.65s; }
+.game-card:nth-child(14) { animation-delay: 0.70s; }
+.game-card:nth-child(15) { animation-delay: 0.75s; }
+.game-card:nth-child(16) { animation-delay: 0.80s; }
+
+/* Accent top bar per card using nth-child colors */
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  z-index: 2;
+}
+.game-card:nth-child(odd)::before  { background: linear-gradient(90deg, var(--coral), var(--peach)); }
+.game-card:nth-child(even)::before { background: linear-gradient(90deg, var(--sky), var(--mint)); }
+
+.game-card:hover {
+  /* transform: translateY(-8px); */
+  box-shadow: 0 20px 48px rgba(0,0,0,0.13);
+  border-color: var(--coral);
+}
+
+.game-card iframe {
+  width: 100%;
+  height: 340px;
+  border: none;
+  display: block;
+}
+
+/* ── Keyframes ── */
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes cardReveal {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.7; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .games-grid { grid-template-columns: 1fr; }
+  .game-card iframe { height: 260px; }
+}

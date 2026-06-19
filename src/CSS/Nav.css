@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@300;400;600&display=swap');
+
+/* ════════════════════════════════════════════
+   NAV WRAPPER
+   sticky keeps it at viewport top while scrolling.
+   z-index 1000 sits above scan rings (z-index 5)
+   and aurora blobs (z-index 0) in MainLayout.
+════════════════════════════════════════════ */
+#navDiv {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100vw;
+  background: rgba(3, 4, 10, 0.95);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ── Inner nav bar ── */
+#nav {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 10px 32px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+/* ════════════════════════════════════════════
+   LOGO LINK
+   Wraps the SVG logo. No underline, flex so
+   the SVG doesn't get extra baseline space.
+   On desktop: full lockup (icon + wordmark).
+   On mobile:  icon-only (CSS swap below).
+════════════════════════════════════════════ */
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  margin-right: 24px;
+  transition: opacity 0.18s ease;
+}
+.nav-logo-link:hover { opacity: 0.82; }
+
+/* Desktop: show full, hide icon-only */
+.nav-logo-full { display: flex; }
+.nav-logo-icon { display: none; }
+
+/* Logo hover — subtle scan line animation defined in MoodPlayLogo.jsx
+   (class .logo-scan). We just add a glow effect from CSS. */
+.nav-logo-link:hover .logo-orbit {
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.6));
+}
+.nav-logo-link:hover .logo-eye {
+  filter: drop-shadow(0 0 3px rgba(0, 212, 255, 0.8));
+}
+
+/* ════════════════════════════════════════════
+   DESKTOP LINK GROUP
+   flex row, all links side by side.
+   margin-left: auto pushes it to the right.
+════════════════════════════════════════════ */
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-wrap: nowrap;
+}
+
+/* ── Shared link style ── */
+.nav-link {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(232, 237, 245, 0.5);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  transition: color 0.18s ease, background 0.18s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #e8edf5;
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+/* ── Admin link — cyan accent, distinct from nav links ── */
+.nav-admin {
+  color: rgba(0, 212, 255, 0.65);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  background: rgba(0, 212, 255, 0.04);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  margin-left: 8px;
+}
+.nav-admin:hover {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.12);
+}
+
+/* ════════════════════════════════════════════
+   HAMBURGER BUTTON
+   Three <span> bars. Hidden on desktop (≥769px).
+   On mobile, it replaces the desktop link group.
+   Animated to an × when .open class is added.
+════════════════════════════════════════════ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 6px;
+  margin-left: auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+.nav-hamburger:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+/* The three bars */
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: rgba(232, 237, 245, 0.7);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Animate bars → × when menu is open */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ════════════════════════════════════════════
+   MOBILE DRAWER
+   Slides down using max-height transition — no
+   JS needed for the height calc. 400px cap is
+   enough for all links + search.
+   aria-hidden keeps screen readers out when closed.
+════════════════════════════════════════════ */
+.nav-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  background: rgba(3, 4, 10, 0.98);
+  border-top: 1px solid transparent;
+  transition: max-height 0.32s ease, padding 0.3s ease, border-color 0.2s ease;
+  box-sizing: border-box;
+}
+.nav-drawer.drawer-open {
+  max-height: 400px;
+  padding: 12px 20px 18px;
+  border-top-color: rgba(0, 212, 255, 0.1);
+}
+
+/* Links inside the drawer are slightly larger for touch targets */
+.drawer-link {
+  font-size: 0.88rem;
+  padding: 11px 14px;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Search lives at the bottom of the drawer */
+.drawer-search {
+  padding: 8px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+
+   > 1024px  Large desktop  — spacious, full wordmark
+   769–1024  Laptop/tablet  — compact, full wordmark
+   ≤ 768px   Tablet/mobile  — hamburger, icon-only logo
+   ≤ 480px   Mobile         — tighter padding
+════════════════════════════════════════════ */
+
+/* Large desktop (> 1024px) — more breathing room */
+@media (min-width: 1025px) {
+  #nav { padding: 10px 48px; }
+  .nav-link { font-size: 1rem; padding: 7px 16px; }
+  .nav-links-desktop { gap: 8px; }
+}
+
+/* Laptop (769px–1024px) — same layout, tighter spacing */
+@media (max-width: 1024px) and (min-width: 769px) {
+  #nav { padding: 10px 24px; }
+  .nav-link { font-size: 1rem; padding: 6px 10px; }
+  .nav-links-desktop { gap: 2px; }
+  .nav-logo-link { margin-right: 16px; }
+}
+
+/* Tablet + mobile (≤ 768px) — switch to hamburger layout */
+@media (max-width: 768px) {
+  #nav { height: 56px; padding: 10px 16px; }
+
+  /* Swap logo: hide full lockup, show icon-only */
+  .nav-logo-full { display: none; }
+  .nav-logo-icon { display: flex; }
+  .nav-logo-link { margin-right: 0; }
+
+  /* Hide desktop links */
+  .nav-links-desktop { display: none; }
+
+  /* Show hamburger */
+  .nav-hamburger { display: flex; }
+
+  /* Drawer becomes visible */
+  .nav-drawer { display: flex; }
+}
+
+/* Mobile (≤ 480px) — maximum compactness */
+@media (max-width: 480px) {
+  #nav { padding: 10px 12px; height: 52px; }
+  .nav-hamburger { width: 34px; height: 34px; gap: 4px; }
+  .drawer-link { font-size: 0.85rem; padding: 10px 12px; }
+  .nav-drawer.drawer-open { padding: 10px 14px 16px; }
+}
